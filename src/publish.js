@@ -18,8 +18,9 @@ function clone (cb) {
   if (!repoUrl) {
     if (pkg && pkg.repository && pkg.repository.url) {
       repoUrl = pkg.repository.url
+    } else {
+      throw new Error('could not determine repo url')
     }
-    throw new Error('could not determin repo url')
   }
   const cmd = `git clone ${repoUrl} deploy`
   exec(cmd, cb)

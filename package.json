@@ -1,0 +1,51 @@
+{
+  "name": "publish-dist",
+  "description": "Build and publish dist",
+  "main": "dist/index.js",
+  "bin": "cli.js",
+  "scripts": {
+    "prebuild": "rimraf dist && mkdirp dist",
+    "build": "babel src --out-dir dist",
+    "prepublish": "npm run build",
+    "pretest": "standard",
+    "test": "exit",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlvince/publish-dist.git"
+  },
+  "keywords": [
+    "publish",
+    "dist",
+    "semantic-release",
+    "ci",
+    "build"
+  ],
+  "author": "Tom Vincent <npm@tlvince.com> (https://tlvince.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tlvince/publish-dist/issues"
+  },
+  "homepage": "https://github.com/tlvince/publish-dist",
+  "devDependencies": {
+    "babel": "5.8.23",
+    "mkdirp": "0.5.1",
+    "standard": "5.3.1",
+    "semantic-release": "^4.3.5"
+  },
+  "dependencies": {
+    "async": "1.4.2",
+    "conventional-commits-parser": "0.1.2",
+    "cpy": "3.4.1",
+    "git-raw-commits": "0.1.2",
+    "meow": "3.3.0",
+    "ncp": "2.0.0",
+    "os-homedir": "1.0.1",
+    "parse-author": "0.2.0",
+    "pkg-up": "1.0.0",
+    "read-pkg-up": "1.0.1",
+    "rimraf": "2.4.3",
+    "through2": "2.0.0"
+  }
+}

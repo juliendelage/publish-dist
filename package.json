@@ -43,8 +43,6 @@
     "ncp": "2.0.0",
     "os-homedir": "1.0.1",
     "parse-author": "0.2.0",
-    "pkg-up": "1.0.0",
-    "read-pkg-up": "1.0.1",
     "rimraf": "2.4.3",
     "through2": "2.0.0"
   }

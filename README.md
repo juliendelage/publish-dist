@@ -14,7 +14,7 @@ Example `package.json`:
   "name": "my-app",
   "scripts": {
     "build": "make",
-    "publish-dist": "npm run build && publish-dist"
+    "publish-dist": "npm run build && publish-dist",
     "semantic-release": "semantic-release pre && npm run publish-dist && npm publish && semantic-release post"
   },
   "repository": {

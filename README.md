@@ -4,10 +4,40 @@
 
 > Publish dist
 
+A CLI tool that commits and pushes `dist` if the last commit was not made by
+itself. Intended to be used as part of [semantic-release][].
+
+Example `package.json`:
+
+```json
+{
+  "name": "my-app",
+  "scripts": {
+    "build": "make",
+    "publish-dist": "npm run build && publish-dist"
+    "semantic-release": "semantic-release pre && npm run publish-dist && npm publish && semantic-release post"
+  },
+  "repository": {
+    "url": "https://github.com/me/my-app"
+  },
+  "author": "Tom Vincent <npm@tlvince.com>"
+}
+```
+
 [travis-image]: https://img.shields.io/travis/tlvince/publish-dist.svg
 [travis-url]: https://travis-ci.org/tlvince/publish-dist
+[semantic-release]: https://github.com/semantic-release/semantic-release
 
 ## Usage
+
+At minimum, publish-dist expects:
+
+* `dist` to exist before it is ran
+* `deploy` to added to `.gitignore`
+* The environment variable `CI_USER_TOKEN` to be set
+* To be using the `master` branch
+
+### With semantic-release
 
 Want semantic-release to build and commit dist? Here's one approach:
 
@@ -29,6 +59,25 @@ See [tlvince/tlvince-semantic-release-push-dist][1] as a working example.
 
 **Pro tip**: create a machine/bot account on GitHub (generate a access token
 for this account) and add it as a collaborator (with push access) to your repo.
+Don't forget to pass `--author-name` and `--author-email`.
+
+## Options
+
+### `--author-name`
+
+The commit's author name (`git config user.name`). Defaults to `.package.json` `author`.
+
+### `--author-email`
+
+The commit's author email (`git config user.email`). Defaults to `.package.json` `author`.
+
+### `--repository-url`
+
+The repository to push to. Defaults to `.package.json` `repository.url`.
+
+## See also
+
+* [publish-latest](https://www.npmjs.com/package/publish-latest)
 
 ## Author
 

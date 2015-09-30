@@ -107,7 +107,6 @@ function publish () {
     throw new Error('process.env.CI_USER_TOKEN is unset')
   }
 
-
   async.series(steps, done)
 }
 

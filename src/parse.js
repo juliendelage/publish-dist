@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs'
 import { knownCommit } from './config'
 
 const gitRawCommits = require('git-raw-commits')

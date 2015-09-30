@@ -5,7 +5,7 @@
 > Publish dist
 
 [travis-image]: https://img.shields.io/travis/tlvince/publish-dist.svg
-[travis-url]: https://travis-ci.org/eHealthAfrica/tlvince/publish-dist
+[travis-url]: https://travis-ci.org/tlvince/publish-dist
 
 ## Usage
 

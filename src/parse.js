@@ -14,14 +14,23 @@ export default function (cb) {
     noteKeywords: '--'
   }
 
+  let rawCommit = ''
+
   function handleError (err) {
     console.error(err.message)
     process.exit(1)
   }
 
-  function parseCommit (chunk) {
-    chunk = chunk.toString()
-    const commit = conventionalCommitsParser.sync(chunk, parseOpts)
+  function pushChunk (chunk) {
+    rawCommit = chunk.toString()
+  }
+
+  function parseCommit () {
+    if (!rawCommit) {
+      throw new Error('could not find last commit')
+    }
+
+    const commit = conventionalCommitsParser.sync(rawCommit, parseOpts)
     if (!commit) {
       throw new Error('could not parse commit')
     }
@@ -40,5 +49,6 @@ export default function (cb) {
 
   gitRawCommits(rawOpts)
     .on('error', handleError)
-    .on('data', parseCommit)
+    .on('data', pushChunk)
+    .on('close', parseCommit)
 }

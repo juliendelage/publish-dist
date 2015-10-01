@@ -41,7 +41,7 @@ function netrc (cb) {
 }
 
 function push (cb) {
-  const cmd = 'git push origin master'
+  const cmd = 'git push origin HEAD:master'
   exec(cmd, cb)
 }
 

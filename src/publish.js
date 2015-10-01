@@ -35,7 +35,7 @@ function commit (cb) {
 }
 
 function netrc (cb) {
-  const host = `machine github.com\n  login ${process.env.CI_USER_TOKEN}`
+  const host = `machine github.com\n  login ${process.env.CI_USER_TOKEN}\n`
   const netrc = `${osHomedir()}/.netrc`
   appendFile(netrc, host, cb)
 }

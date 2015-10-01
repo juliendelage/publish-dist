@@ -69,10 +69,6 @@ The commit's author name (`git config user.name`). Defaults to `.package.json` `
 
 The commit's author email (`git config user.email`). Defaults to `.package.json` `author`.
 
-### `--repository-url`
-
-The repository to push to. Defaults to `.package.json` `repository.url`.
-
 ## See also
 
 * [publish-latest](https://www.npmjs.com/package/publish-latest)

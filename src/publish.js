@@ -8,19 +8,6 @@ const async = require('async')
 const osHomedir = require('os-homedir')
 const parseAuthor = require('parse-author')
 
-function addOrigin (cb) {
-  let repoUrl = opts.flags.repositoryUrl
-  if (!repoUrl) {
-    if (pkg && pkg.repository && pkg.repository.url) {
-      repoUrl = pkg.repository.url
-    } else {
-      throw new Error('could not determine repo url')
-    }
-  }
-  const cmd = `git remote add origin ${repoUrl}`
-  exec(cmd, cb)
-}
-
 function add (cb) {
   const cmd = 'git add dist'
   exec(cmd, cb)
@@ -65,7 +52,6 @@ function publish () {
     configEmail,
     commit,
     netrc,
-    addOrigin,
     push
   ]
 

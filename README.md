@@ -33,7 +33,6 @@ Example `package.json`:
 At minimum, publish-dist expects:
 
 * `dist` to exist before it is ran
-* `deploy` to added to `.gitignore`
 * The environment variable `CI_USER_TOKEN` to be set
 * To be using the `master` branch
 
@@ -45,11 +44,10 @@ Want semantic-release to build and commit dist? Here's one approach:
 2. Generate a new GitHub access token (only repo/public_repo scope is required)
 3. Run `travis env set CI_USER_TOKEN [token]`
 4. Add a npm build script that's suitable for your project
-5. Add `deploy` to `.gitignore`
-6. Add `publish-dist` as a dev dependency
-7. Add it as an npm deploy script
-8. Add a predeploy script that runs the npm build script
-9. Call `npm run deploy` after `semantic-release pre`
+5. Add `publish-dist` as a dev dependency
+6. Add it as an npm deploy script
+7. Add a predeploy script that runs the npm build script
+8. Call `npm run deploy` after `semantic-release pre`
 
 That's it!
 

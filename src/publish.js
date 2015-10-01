@@ -1,19 +1,14 @@
 import { readFileSync, appendFile } from 'fs'
 import { exec } from 'child_process'
-import { ncp } from 'ncp'
-
 import { knownCommit } from './config'
 
 const pkg = JSON.parse(readFileSync('./package.json'))
 const opts = require('./opts')()
 const async = require('async')
-const rimraf = require('rimraf')
 const osHomedir = require('os-homedir')
 const parseAuthor = require('parse-author')
 
-const cwd = process.cwd()
-
-function clone (cb) {
+function addOrigin (cb) {
   let repoUrl = opts.flags.repositoryUrl
   if (!repoUrl) {
     if (pkg && pkg.repository && pkg.repository.url) {
@@ -22,17 +17,8 @@ function clone (cb) {
       throw new Error('could not determine repo url')
     }
   }
-  const cmd = `git clone ${repoUrl} deploy`
+  const cmd = `git remote add origin ${repoUrl}`
   exec(cmd, cb)
-}
-
-function copy (cb) {
-  ncp('dist', 'deploy/dist', cb)
-}
-
-function cd (cb) {
-  process.chdir('deploy')
-  cb(null)
 }
 
 function add (cb) {
@@ -72,28 +58,15 @@ function push (cb) {
   exec(cmd, cb)
 }
 
-function cdBack (cb) {
-  process.cwd(cwd)
-  cb(null)
-}
-
-function rmrf (cb) {
-  rimraf('deploy', cb)
-}
-
 function publish () {
   const steps = [
-    clone,
-    copy,
-    cd,
     add,
     configName,
     configEmail,
     commit,
     netrc,
-    push,
-    cdBack,
-    rmrf
+    addOrigin,
+    push
   ]
 
   function done (err) {

@@ -27,7 +27,7 @@ function configEmail (cb) {
 
 function commit (cb) {
   const cmd = [
-    'git commit --all',
+    'git commit dist',
     `--message "${knownCommit.header}"`,
     `--message "${knownCommit.body}\n\n${knownCommit.footer}"`
   ].join(' ')

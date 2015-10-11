@@ -71,6 +71,7 @@ The commit's author email (`git config user.email`). Defaults to `.package.json`
 
 ## See also
 
+* [publish-repo](https://www.npmjs.com/package/publish-repo)
 * [publish-latest](https://www.npmjs.com/package/publish-latest)
 
 ## Author

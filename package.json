@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/tlvince/publish-dist",
   "devDependencies": {
+    "babel": "^5.8.23",
     "mkdirp": "0.5.1",
     "rimraf": "2.4.3",
     "standard": "5.3.1",
@@ -37,7 +38,6 @@
   },
   "dependencies": {
     "async": "1.4.2",
-    "babel": "^5.8.23",
     "conventional-commits-parser": "0.1.2",
     "git-raw-commits": "0.1.2",
     "meow": "3.3.0",

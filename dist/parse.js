@@ -45,9 +45,9 @@ exports['default'] = function (cb) {
       return key in _config.knownCommit;
     }).every(function (key) {
       if (Array.isArray(_config.knownCommit[key])) {
-        return _config.knownCommit[key].findIndex(function (v) {
+        return _config.knownCommit[key].some(function (v) {
           return v === commit[key];
-        }) >= 0;
+        });
       } else {
         return commit[key] === _config.knownCommit[key];
       }

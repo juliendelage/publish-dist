@@ -39,7 +39,7 @@ export default function (cb) {
       .filter(key => key in knownCommit)
       .every(key => {
         if (Array.isArray(knownCommit[key])) {
-          return knownCommit[key].findIndex(v => v === commit[key]) >= 0
+          return knownCommit[key].some(v => v === commit[key])
         } else {
           return commit[key] === knownCommit[key]
         }

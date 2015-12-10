@@ -37,7 +37,13 @@ export default function (cb) {
 
     const matches = Object.keys(commit)
       .filter(key => key in knownCommit)
-      .every(key => commit[key] === knownCommit[key])
+      .every(key => {
+        if (Array.isArray(knownCommit[key])) {
+          return knownCommit[key].findIndex(v => v === commit[key]) >= 0
+        } else {
+          return commit[key] === knownCommit[key]
+        }
+      })
 
     if (matches) {
       console.log('last commit by publish-dist; exiting')

@@ -28,7 +28,8 @@ function configEmail (cb) {
 function commit (cb) {
   const cmd = [
     'git commit dist',
-    `--message "${knownCommit.header}"`,
+    opts.flags.skipHooks === true ? '--no-verify' : '',
+    `--message "${knownCommit.header[opts.flags.skipCi === true ? 1 : 0]}"`,
     `--message "${knownCommit.body}\n\n${knownCommit.footer}"`
   ].join(' ')
   exec(cmd, cb)
@@ -41,7 +42,11 @@ function netrc (cb) {
 }
 
 function push (cb) {
-  const cmd = 'git push origin HEAD:master'
+  const cmd = [
+    'git push',
+    opts.flags.skipHooks === true ? '--no-verify' : '',
+    'origin HEAD:master'
+  ].join(' ')
   exec(cmd, cb)
 }
 

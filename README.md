@@ -69,6 +69,14 @@ The commit's author name (`git config user.name`). Defaults to `.package.json` `
 
 The commit's author email (`git config user.email`). Defaults to `.package.json` `author`.
 
+### `--skip-ci`
+
+Adds `[ci skip]` to the commit's header to skip the build in Travis for the publish-dist commit. Defaults to `false`.
+
+### `--skip-hooks`
+
+Skips git hooks on `git commit` &amp; `git push`. 
+
 ## See also
 
 * [publish-repo](https://www.npmjs.com/package/publish-repo)

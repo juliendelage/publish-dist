@@ -1,5 +1,6 @@
 {
   "name": "publish-dist",
+  "version": "1.0.5",
   "description": "Build and publish dist",
   "main": "dist/index.js",
   "bin": "cli.js",

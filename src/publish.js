@@ -29,8 +29,7 @@ function commit (cb) {
   const cmd = [
     'git commit dist',
     opts.flags.skipHooks === true ? '--no-verify' : '',
-    `--message "${knownCommit.header[opts.flags.skipCi === true ? 1 : 0]}"`,
-    `--message "${knownCommit.body}\n\n${knownCommit.footer}"`
+    `--message "${knownCommit.header[opts.flags.skipCi === true ? 1 : 0]}"`
   ].join(' ')
   exec(cmd, cb)
 }

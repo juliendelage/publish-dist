@@ -34,7 +34,7 @@ function configEmail(cb) {
 }
 
 function commit(cb) {
-  var cmd = ['git commit dist', opts.flags.skipHooks === true ? '--no-verify' : '', '--message "' + _config.knownCommit.header[opts.flags.skipCi === true ? 1 : 0] + '"', '--message "' + _config.knownCommit.body + '\n\n' + _config.knownCommit.footer + '"'].join(' ');
+  var cmd = ['git commit dist', opts.flags.skipHooks === true ? '--no-verify' : '', '--message "' + _config.knownCommit.header[opts.flags.skipCi === true ? 1 : 0] + '"'].join(' ');
   (0, _child_process.exec)(cmd, cb);
 }
 

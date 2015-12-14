@@ -52,8 +52,11 @@ function push(cb) {
 function publish() {
   var steps = [add, configName, configEmail, commit, netrc, push];
 
-  function done(err) {
+  function done(err, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
     if (err) {
+      console.lof('exec error: ' + err);
       throw err;
     }
     console.log('A new build has been pushed. You can ignore the next error :)');

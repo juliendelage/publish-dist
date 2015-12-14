@@ -61,7 +61,7 @@ function publish () {
 
   function done (err, stdout, stderr) {
     console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
+    console.log('stderr: ' + (stderr || 'none'));
     if (err) {
       console.log('exec error: ' + err);
       throw err
